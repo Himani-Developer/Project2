@@ -1,0 +1,16 @@
+<div class="container">
+<h1> Blogs Waiting for Approval</h1>
+
+<div class="card-columns">
+  <div class="card bg-light" ng-repeat="blog in blogsWaitingForApproval">
+    <div class="card-body text-center">
+      <p class="card-text">
+<a href="#!/getblogswaitingforapproval/{{blog.id}}"><b>Blog Title::</b>{{blog.blogTitle}}</a><br>
+<b>Posted On:</b>{{blog.postedOn | date:'dd:MM:yyyy'}}<br>
+<b>Posted By:</b>{{blog.postedBy.firstname}} &nbsp; {{blog.postedBy.lastname}}
+
+</p>
+    </div>
+  </div>
+</div>
+</div>

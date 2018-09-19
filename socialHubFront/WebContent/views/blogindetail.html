@@ -1,0 +1,15 @@
+<div class="container">
+<b>Blog Title</b><br>
+{{blogPost.blogTitle}}<br>
+<b>Posted On::</b> {{blogPost.postedOn | date:'dd-MM-yyyy'}}<br>
+<b>Posted By::</b>{{blogPost.postedBy.firstname}} &nbsp; {{blogPost.postedBy.lastname}}<br>
+
+<p ng-bind-html="content"><br>
+
+Likes::<i class="fas fa-thumbs-up"></i>{{blogPost.likes}}<br>
+
+<a href="#!/getblogs">Get All Blogs</a>
+
+
+</p>
+</div>

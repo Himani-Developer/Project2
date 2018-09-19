@@ -1,0 +1,20 @@
+
+<hr><hr><hr><hr>
+<b>Blog Post Form</b> 
+<form>
+<table>
+<tr>
+<td>Enter Blog Title</td>
+<td><input type="text" ng-model="blogpost.blogTitle"></td>
+</tr>
+<tr>
+<td>Enter blog content</td>
+<td><textarea ng-model="blogpost.blogContent"></textarea></td>
+</tr>
+<tr>
+<td>
+<button ng-click="addBlogPost(blogpost)">Add Blog</button>
+</td>
+</tr>
+</table>
+</form>

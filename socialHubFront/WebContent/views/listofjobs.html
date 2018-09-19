@@ -1,0 +1,59 @@
+<!--  <div class="container">
+	<div class="panel-info">
+		<div class="panel-heading">
+			<b>Job Details</b>
+		</div>
+
+		<div class="panel-body">
+			<ul style="list-style: none">
+				<li ng-repeat="job in jobs">
+				<a ng-click="showJobDetails(job.id)">{{job.jobTitle}}</a><br> 
+				<b>Posted On:</b>{{job.postedOn | date:'yyyy-MM-dd'}}
+					
+					<div ng-show="showJob && id==job.id">
+					<b>Job Description::</b>{{job.jobDescription}}<br>
+					<b>Salary::</b>{{job.salary}}<br>
+					<b>Skills REquired::</b>{{job.skillsRequired}}
+					<b>Location::</b>{{job.location}}
+					<b>Company Name::</b>{{job.companyname}}
+					
+					</div>
+					
+					<hr></li>
+			</ul>
+		</div>
+	</div>
+</div>  -->
+
+
+<hr><hr>
+<div class="container">
+	<h5>Job Details</h5>
+	<table border="1" ng-repeat="job in jobs">
+		<tr>
+			<td bgcolor="yellow"><i class="fas fa-square"><a href="" ng-click="showJobDetails(job.id)"></i>{{job.jobTitle}}</a></td>
+		</tr>
+
+		<tr>
+			<td><b>Posted On:</b>{{job.postedOn | date:'yyyy-MM-dd'}}
+				<div bgcolor="cyan" ng-show="showJob && id==job.id">
+					<b>Job Description::</b>{{job.jobDescription}}<br> <b>Salary::</b>{{job.salary}}<br>
+					<b>Skills REquired::</b>{{job.skillsRequired}} <b>Location::</b>{{job.location}}
+					<b>Company Name::</b>{{job.companyname}}
+
+				</div>
+			</td>
+		</tr>
+	</table>
+	
+	
+
+</div>
+
+
+
+
+
+
+
+

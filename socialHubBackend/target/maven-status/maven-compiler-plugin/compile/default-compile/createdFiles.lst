@@ -1,0 +1,8 @@
+com\niit\models\User.class
+com\niit\socialHubBackend\App.class
+com\niit\DAO\UserDAOImpl.class
+com\niit\configuration\DBConfiguration.class
+com\niit\configuration\WebAppConfig.class
+com\niit\DAO\UserDAO.class
+com\niit\configuration\WebAppInitializer.class
+com\niit\models\ErrorClazz.class

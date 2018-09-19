@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+<meta charset="ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="assets/css/bootstrap.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"  crossorigin="anonymous"> 
+<!-- <link rel="stylesheet" href="assets/css/fontawesome.css" crossorigin="anonymous"> -->
+<script src="assets/js/angularjs.js"></script>
+<script src="assets/js/angular-route.js"></script>
+<script  src="assets/js/angular-cookies.js"></script>
+<script src="assets/js/jquery3.js"></script>
+<script src="assets/js/popper.js"></script>
+
+<script src="assets/js/bootstrap.js"></script>
+<script type="text/javascript" src="assets/js/app.js"></script>
+<script type="text/javascript" src="controllers/usercontroller.js"></script>
+<script type="text/javascript" src="services/userservice.js"></script>
+<script type="text/javascript" src="controllers/jobcontroller.js"></script>
+<script type="text/javascript" src="services/jobservice.js"></script>
+<script type="text/javascript" src="controllers/blogpostcontroller.js"></script>
+<script type="text/javascript" src="services/blogpostservice.js"></script>
+<script type="text/javascript" src="controllers/blogindetailcontroller.js"></script>
+
+</head>
+<body ng-app="app">
+<div class="container">
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+
+  <!-- Company/logo -->
+  <a class="navbar-brand" href="#">
+    <!-- <img src="assets/images/Capture.PNG" alt="smiley" style="width:40px;"> -->
+    
+    <i class="fab fa-twitter-square"></i>
+  </a>
+  
+  <!-- Links -->
+  <ul class="navbar-nav">
+  <li class="nav-item">
+      <a class="nav-link" href="#!/home">Home</a>
+    </li>
+    <li class="nav-item" ng-show="user.email==undefined">
+      <a class="nav-link" href="#!/registration">Registration</a>
+    </li>
+    <li class="nav-item" ng-show="user.email==undefined">
+      <a class="nav-link" href="#!/login">Login</a>
+    </li>
+    
+    
+    
+    <!-- Dropdown -->
+    <li class="nav-item dropdown" ng-show="user.email!=undefined">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        JOBS 
+      </a>
+      <div class="dropdown-menu">
+        <a ng-show="user.role=='ADMIN'" class="dropdown-item" href="#!/addjob">Add Job</a>
+        <a class="dropdown-item" href="#!/getalljobs">View All Jobs</a>
+        
+      </div>
+    </li>
+    
+    
+    <li class="nav-item dropdown" ng-show="user.email!=undefined">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        Blogs 
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#!/addblogpost">Add Blog</a>
+        <a class="dropdown-item" href="#!/getblogs">View  Blogs</a>
+        <a ng-show="user.role=='ADMIN'" class="dropdown-item" href="#!/blogswaitingforapproval">Blogs waiting for approval</a>
+        
+      </div>
+    </li>
+    
+  </ul>
+  
+  
+  
+  <ul class="nav justify-content-end">
+    <li class="nav-item" ng-show="user.email!=undefined">
+      <a class="nav-link" href="#!/updateprofile">WELCOME :: {{user.firstname}}&nbsp;{{user.lastname}}</a>
+    </li>
+    <li class="nav-item" ng-show="user.email!=undefined" >
+      <a class="nav-link" ng-click="logout()" href="" >LOGOUT</a>
+    </li>
+    
+    <!-- <li class="nav-item">
+      <a class="nav-link disabled" href="#">Disabled</a>
+    </li> -->
+  </ul>
+  
+</nav>
+
+
+<div ng-view>
+
+</div>
+  
+
+</div>
+</body>
+</body>
+</html>
