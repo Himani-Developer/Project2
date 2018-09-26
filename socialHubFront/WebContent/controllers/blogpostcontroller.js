@@ -20,6 +20,7 @@ app.controller("BlogPostCtrl",function($scope,$location,BlogPostService,$rootSco
 	}
 	
 	
+	
 	//List of approved blogs
 	function getBlogsApproved(){
 		

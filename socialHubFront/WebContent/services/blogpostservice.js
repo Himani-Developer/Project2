@@ -11,6 +11,16 @@ app.factory("BlogPostService",function($http){
 		var url=BASE_URL+"/addblogpost"
 		return $http.post(url,blogPost)
 	}
+	
+	blogPostService.inclike=function(id){
+		var url=BASE_URL+"/incrementLikes/"+id
+		return $http.get(url)
+	}
+	
+	blogPostService.incdislike=function(id){
+		var url=BASE_URL+"/incrementDislikes/"+id
+		return $http.get(url)
+	}
 		
 	blogPostService.getBlogsApproved=function(){
 		var url=BASE_URL+"/getblogs"
@@ -18,7 +28,8 @@ app.factory("BlogPostService",function($http){
 	}
 	
 	blogPostService.getBlog=function(id){
-		return(BASE_URL+"/getblog/"+id)
+	
+		return $http.get(BASE_URL+"/getblog/"+id)
 	}
 	
 	blogPostService.getBlogsWaitingForApproval=function(){
@@ -30,6 +41,28 @@ app.factory("BlogPostService",function($http){
 		return $http.put(BASE_URL+"/approveblogpost",blogPost)
 	}
 		
+	
+	blogPostService.rejectBlogPost=function(blogPost,rejectionReason){
+		console.log(blogPost);
+		return $http.put(BASE_URL+"/rejectblogpost?rejectionReason="+rejectionReason,blogPost)
+	}
 		
+	
+	blogPostService.getNotificationNotViewed=function(){
+		return $http.get(BASE_URL+"/notifications")
+		}		
+	
+	
+	blogPostService.addComment=function(blog,commentTxt){
+		return $http.post(BASE_URL+"/addblogcomment?commentTxt="+commentTxt,blog)
+	}
+	
+	blogPostService.getBlogComments=function(blogPostId){
+		return $http.get(BASE_URL+"/getcomments/"+blogPostId)
+	}
+	
+
+	
+	
 		return blogPostService;
 })

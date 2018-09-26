@@ -26,16 +26,16 @@ public class BlogPost {
 	private User postedBy;  //one user many blogpost
 	private boolean approvalStatus;
 	private int likes;
-	//private int dislikes;
+	private int dislikes;
 	
 	
 	
-	/*public int getDislikes() {
+	public int getDislikes() {
 		return dislikes;
 	}
 	public void setDislikes(int dislikes) {
 		this.dislikes = dislikes;
-	}*/
+	}
 	public int getId() {
 		return id;
 	}

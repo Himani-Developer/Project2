@@ -1,15 +1,38 @@
+<br><br><br>
+
 <div class="container">
-<b>Blog Title</b><br>
-{{blogPost.blogTitle}}<br>
-<b>Posted On::</b> {{blogPost.postedOn | date:'dd-MM-yyyy'}}<br>
-<b>Posted By::</b>{{blogPost.postedBy.firstname}} &nbsp; {{blogPost.postedBy.lastname}}<br>
+<b>Blog Title:: </b>{{blogPost.blogTitle}}<br>
+<b>Posted On:: </b> {{blogPost.postedOn | date:'dd-MM-yyyy'}}<br>
+<b>Posted By:: </b>{{blogPost.postedBy.firstname}} &nbsp; {{blogPost.postedBy.lastname}}<br>
 
-<p ng-bind-html="content"><br>
 
-Likes::<i class="fas fa-thumbs-up"></i>{{blogPost.likes}}<br>
+<p ng-bind-html="content"><br> </p>
+
+Likes::<a ng-click="inclike(blogPost.id)"><i class="far fa-thumbs-up"></i></a>{{blogPost.likes}}<br>
+DisLikes::<a ng-click="incdislike(blogPost.id)"><i class="fas fa-thumbs-down"></i></a>{{blogPost.dislikes}}<br>
+
+<textarea rows="6" cols="30" ng-model="commentTxt" required>
+
+</textarea><span style="color:red">{{error}}</span><br>
+<button class="btn btn-info" ng-click="addComment(blogPost,commentTxt)">POST COMMENT</button>
+<br>
+<div ng-hide="blogComment==undefined">
+<b>{{blogComment.commentText}} &nbsp; Commented By: {{blogComment.commentedBy.email}},&nbsp; Commented On : {{blogComment.commentedOn | date:'yyyy:MM:dd:mm:ss'}}</b>
+</div>
+<hr>
+<a href="" ng-click="getBlogComments(blogPost.id)">View all comments</a><br>
+<div ng-repeat="blogComment in blogComments| orderBy:'-commentedOn' ">
+<b>{{blogComment.commentText}}</b><br>
+<b>Commented By: 
+<span ng-if="user.email!=blogComment.commentedBy.email">
+{{blogComment.commentedBy.email}}</span><span ng-if="user.email==blogComment.commentedBy.email">You</span>&nbsp; Commented On : {{blogComment.commentedOn | date:'yyyy:MM:dd:mm:ss'}}</b>
+</div>
+
+
+
 
 <a href="#!/getblogs">Get All Blogs</a>
 
 
-</p>
+
 </div>

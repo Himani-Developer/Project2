@@ -10,5 +10,11 @@
 </p>
 
 <button type="button" class="btn btn-info" ng-click="approveBlogPost(blogPost)">Approve</button>
-<button type="button" class="btn btn-danger">Reject</button>
+<button type="button" class="btn btn-danger" ng-click="showTextArea()">Reject</button>
+<div ng-show="isRejected">
+<textarea ng-model="rejectionReason"></textarea>
+<button ng-click="rejectBlogPost(blogPost)">Submit</button>
+</div>
+
+
 </div>

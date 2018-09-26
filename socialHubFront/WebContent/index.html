@@ -22,6 +22,11 @@
 <script type="text/javascript" src="controllers/blogpostcontroller.js"></script>
 <script type="text/javascript" src="services/blogpostservice.js"></script>
 <script type="text/javascript" src="controllers/blogindetailcontroller.js"></script>
+<script type="text/javascript" src="controllers/homecontroller.js"></script>
+<script type="text/javascript" src="services/notificationservice.js"></script>
+<script type="text/javascript" src="controllers/notificationcontroller.js"></script>
+<script type="text/javascript" src="services/friendservice.js"></script>
+<script type="text/javascript" src="controllers/friendcontroller.js"></script>
 
 </head>
 <body ng-app="app">
@@ -75,7 +80,36 @@
       </div>
     </li>
     
+    
+    
+    
+    <li class="nav-item dropdown" ng-show="user.email!=undefined">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" >
+       <i class="fa fa-bell" aria-hidden="true"></i><span class="badge" ng-if="notificationCount>0">{{notificationCount}}</span>
+      </a>
+      <div class="dropdown-menu" >
+      <div ng-repeat="notification in notifications">
+        <a class="dropdown-item" href="#!/getnotification/{{notification.notification_id}}">Blogpost Title <b>{{notification.blogPostTitle}}</b> approval status is updated..Click here to view status</a>
+        <hr>
+        </div>
+      </div>
+    </li>
+    
+    <li class="nav-item dropdown" ng-show="user.email!=undefined">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        Friend
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#!/suggestedusers">Suggested Users</a>
+        <a class="dropdown-item" href="#!/pendingrequests">Pending Requests</a>
+        <a class="dropdown-item" href="#!/Listoffriends">Your Friend List</a>
+        
+        
+      </div>
+    </li>
+    
   </ul>
+  
   
   
   

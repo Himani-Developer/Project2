@@ -16,7 +16,9 @@ app.config(function($routeProvider){
 	.when('/getblog/:id',{controller:'BlogInDetailCtrl',templateUrl:'views/blogindetail.html'})
 	.when('/blogswaitingforapproval',{controller:'BlogPostCtrl',templateUrl:'views/listofblogswaitingforapproval.html'})
 	.when('/getblogswaitingforapproval/:id',{controller:'BlogInDetailCtrl',templateUrl:'views/blogapprovalform.html'})
-	.when('/home',{templateUrl:'views/home.html'})
+	.when('/home',{controller:'HomeCtrl',templateUrl:'views/home.html'})
+	.when('/getnotification/:notification_id',{controller:'NotificationCtrl',templateUrl:'views/notificationDetails.html'})
+	.when('/suggestedusers',{controller:'FriendCtrl',templateUrl:'views/suggesteduserslist.html'})
 	
 	.otherwise({templateUrl:'views/home.html'})
 })

@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
 <h1>   Approved Blogs</h1>
 
 <div class="card-columns">
@@ -13,4 +13,21 @@
     </div>
   </div>
 </div>
+</div>
+ -->
+
+<hr><hr><hr>
+<div class="card">
+  <div class="card-header">
+     Approved Blogs
+  </div>
+  <div class="card-body" ng-repeat="blog in blogsApproved">
+    <h5 class="card-title"><a href="#!/getblog/{{blog.id}}"><b> Blog Title::</b>{{blog.blogTitle}}</a></h5>
+    <p class="card-text">
+    
+<b>Posted On:</b>{{blog.postedOn | date:'dd:MM:yyyy'}}<br>
+<b>Posted By:</b>{{blog.postedBy.firstname}} &nbsp; {{blog.postedBy.lastname}}
+    </p>
+    
+  </div>
 </div>

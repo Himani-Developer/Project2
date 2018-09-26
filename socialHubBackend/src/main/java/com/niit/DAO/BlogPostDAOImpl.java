@@ -60,17 +60,27 @@ public class BlogPostDAOImpl implements BlogPostDAO {
 
 	public boolean incLikes(int id) {
 		try {
-			
-			
-			return false;
+			BlogPost blogPost=this.getBlogPost(id);
+			blogPost.setLikes(blogPost.getLikes()+1);
+			sessionFactory.getCurrentSession().update(blogPost);
+			return true;
 		}catch(Exception e) {
+			System.out.println("Exception Arised:"+e);
 			return false;
 		}
 		
 	}
 
 	public boolean dislikes(int id) {
-		// TODO Auto-generated method stub
+		try {
+			BlogPost blogPost=this.getBlogPost(id);
+			blogPost.setDislikes(blogPost.getDislikes()+1);
+			sessionFactory.getCurrentSession().update(blogPost);
+			
+			return true;
+		}catch(Exception e) {
+			
+		}
 		return false;
 	}
 
