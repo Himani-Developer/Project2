@@ -28,13 +28,13 @@ private UserDAO userDAO;
 
 @RequestMapping(value="/suggestedusers",method=RequestMethod.GET)
 public ResponseEntity<?> getAllSuggestedUsers(HttpSession session){
-	/*String email=(String)session.getAttribute("loggedInUser");
+	String email=(String)session.getAttribute("loggedInUser");
 	if(email==null) {
 		ErrorClazz errorClazz=new ErrorClazz(4, "Unauthorised access...PLs login");
 		return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.UNAUTHORIZED);
-	}*/
+	}
 	
-	String email="himani@gmail.com";
+	//String email="himani@gmail.com";
 	
 	List<User> suggestedUsers=friendDAO.getSuggestedUsers(email);
 	return new ResponseEntity<List<User>>(suggestedUsers,HttpStatus.OK);
@@ -61,4 +61,58 @@ public ResponseEntity<?> addFriendRequest(@RequestBody User friendRequestToId,Ht
 	return new ResponseEntity<Friend>(friend,HttpStatus.OK);
 	
 }
+
+@RequestMapping(value="/pendingrequests",method=RequestMethod.GET)
+public ResponseEntity<?> getPendingRequests(HttpSession session){
+	String email=(String)session.getAttribute("loggedInUser");
+	if(email==null) {
+		ErrorClazz errorClazz=new ErrorClazz(4, "Unauthorised access...PLs login");
+		return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.UNAUTHORIZED);
+	}
+	
+	//String email="anika@gmail.com";
+	List<Friend> pendingRequests=friendDAO.getPendingRequests(email);
+	return new ResponseEntity<List<Friend>>(pendingRequests,HttpStatus.OK);
+	
+}
+
+@RequestMapping(value="/acceptrequest",method=RequestMethod.PUT)
+public ResponseEntity<?> acceptRequests(HttpSession session,@RequestBody Friend friend){
+	String email=(String)session.getAttribute("loggedInUser");
+	if(email==null) {
+		ErrorClazz errorClazz=new ErrorClazz(4, "Unauthorised access...PLs login");
+		return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.UNAUTHORIZED);
+	}
+	
+	friend.setStatus('A');
+	friendDAO.acceptFriendRequest(friend);
+	return new ResponseEntity<Friend>(friend,HttpStatus.OK);
+}
+
+@RequestMapping(value="/deleterequest",method=RequestMethod.PUT)
+public ResponseEntity<?> deleteRequests(HttpSession session,@RequestBody Friend friend){
+	String email=(String)session.getAttribute("loggedInUser");
+	if(email==null) {
+		ErrorClazz errorClazz=new ErrorClazz(4, "Unauthorised access...PLs login");
+		return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.UNAUTHORIZED);
+	}
+	
+	friendDAO.deleteFriendRequest(friend);
+	return new ResponseEntity<Void>(HttpStatus.OK);
+}
+
+@RequestMapping(value="/listoffriends",method=RequestMethod.GET)
+public ResponseEntity<?> listOffriends(HttpSession session){
+	String email=(String)session.getAttribute("loggedInUser");
+	if(email==null) {
+		ErrorClazz errorClazz=new ErrorClazz(4, "Unauthorised access...PLs login");
+		return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.UNAUTHORIZED);
+	}
+	
+	List<User> listoffriends=friendDAO.listOfFriends(email);
+	return new ResponseEntity<List<User>>(listoffriends,HttpStatus.OK);
+	
+}
+
+
 }

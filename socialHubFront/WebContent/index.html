@@ -5,13 +5,23 @@
 <meta charset="ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="assets/css/bootstrap.css">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"  crossorigin="anonymous"> 
-<!-- <link rel="stylesheet" href="assets/css/fontawesome.css" crossorigin="anonymous"> -->
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"  crossorigin="anonymous"> --> 
+ <link rel="stylesheet" href="assets/css/fontawesome-all.css" > 
+
+       <script src="assets/js/jquery3.js"></script>
+     <link rel="stylesheet" type="text/css" media="all" href= "assets/css/fileinput.min.css"> 
+     <link rel="stylesheet" type="text/css" media="all" href="assets/themes/explorer/theme.css" > 
+    <script src="assets/js/fileinput.min.js" type="text/javascript"></script>
+    <script src="assets/themes/explorer/theme.js" type="text/javascript"></script>
+  
+  
+  
 <script src="assets/js/angularjs.js"></script>
 <script src="assets/js/angular-route.js"></script>
 <script  src="assets/js/angular-cookies.js"></script>
 <script src="assets/js/jquery3.js"></script>
 <script src="assets/js/popper.js"></script>
+
 
 <script src="assets/js/bootstrap.js"></script>
 <script type="text/javascript" src="assets/js/app.js"></script>
@@ -102,7 +112,7 @@
       <div class="dropdown-menu">
         <a class="dropdown-item" href="#!/suggestedusers">Suggested Users</a>
         <a class="dropdown-item" href="#!/pendingrequests">Pending Requests</a>
-        <a class="dropdown-item" href="#!/Listoffriends">Your Friend List</a>
+        <a class="dropdown-item" href="#!/listoffriends">Your Friend List</a>
         
         
       </div>
@@ -117,6 +127,11 @@
     <li class="nav-item" ng-show="user.email!=undefined">
       <a class="nav-link" href="#!/updateprofile">WELCOME :: {{user.firstname}}&nbsp;{{user.lastname}}</a>
     </li>
+    
+    <li class="nav-item" ng-show="user.email!=undefined">
+    <a class="nav-link" href="#!/uploadprofilepicture">Profile Pic    </a>
+    </li>
+    
     <li class="nav-item" ng-show="user.email!=undefined" >
       <a class="nav-link" ng-click="logout()" href="" >LOGOUT</a>
     </li>

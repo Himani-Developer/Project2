@@ -19,6 +19,10 @@ app.config(function($routeProvider){
 	.when('/home',{controller:'HomeCtrl',templateUrl:'views/home.html'})
 	.when('/getnotification/:notification_id',{controller:'NotificationCtrl',templateUrl:'views/notificationDetails.html'})
 	.when('/suggestedusers',{controller:'FriendCtrl',templateUrl:'views/suggesteduserslist.html'})
+	.when('/pendingrequests',{controller:'FriendCtrl',templateUrl:'views/pendingrequestlist.html'})
+	.when('/listoffriends',{controller:'FriendCtrl',templateUrl:'views/friendlist.html'})
+	.when('/uploadprofilepicture',{templateUrl:'views/uploadprofilepicture.html'})
+	
 	
 	.otherwise({templateUrl:'views/home.html'})
 })

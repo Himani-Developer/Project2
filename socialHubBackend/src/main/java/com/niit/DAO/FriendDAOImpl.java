@@ -14,7 +14,7 @@ import org.springframework.stereotype.Repository;
 import com.niit.models.Friend;
 import com.niit.models.User;
 
-@Repository
+@Repository("friendDAO")
 @Transactional
 public class FriendDAOImpl implements FriendDAO {
 
@@ -53,19 +53,24 @@ public class FriendDAOImpl implements FriendDAO {
 	}
 
 	public List<Friend> getPendingRequests(String email) {
-		
+		try {
 		Session session=sessionFactory.getCurrentSession();
-		Query query=session.createQuery("from Friend f where f.status=:'P' and f.toId.email=:email").setParameter("email", email);
+		Query query=session.createQuery("from Friend f where f.toId.email=:email and f.status='P'  ").setParameter("email", email);
 		List<Friend> pendingRequests=query.list();
 		return pendingRequests;
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	public List<User> listOfFriends(String email) {
 		Session session=sessionFactory.getCurrentSession();
 		//friend request from loggedin user to other users, and if it is accepted (status is 'A')
-		Query query1=session.createQuery("select f.toId from Friend f where f.fromId.email=:email and f.status=:'A' ").setParameter("email", email);
+		Query query1=session.createQuery("select f.toId from Friend f where f.fromId.email=:email and f.status='A' ").setParameter("email", email);
 		List<User> list1=query1.list();
-		Query query2=session.createQuery("select f.fromId from Friend f where f.toId.email=:email and f.status=:'A'").setParameter("email", email);
+		Query query2=session.createQuery("select f.fromId from Friend f where f.toId.email=:email and f.status='A'").setParameter("email", email);
 		List<User> list2=query2.list();
 		
 		list1.addAll(list2);

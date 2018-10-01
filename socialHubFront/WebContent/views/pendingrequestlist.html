@@ -1,0 +1,21 @@
+<br><br><br>
+
+<div class="card-header bg-primary text-white">
+ <h3 style="text-align: center;">Your Pending Friend Requests</h3>
+</div>
+
+<ul style="list-style:none;">
+<li ng-repeat="pendingRequest in pendingRequests">
+{{pendingRequest.fromId.firstname}} &nbsp; {{pendingRequest.fromId.lastname}}<br>
+{{pendingRequest.fromId.email}} <br>
+{{pendingRequest.fromId.role}}<br>
+{{pendingRequest.fromId.phonenumber}}
+
+<button class="btn btn-info" ng-click="acceptRequest(pendingRequest)">ACCEPT</button>
+<button class="btn btn-danger" ng-click="deleteRequest(pendingRequest)">Reject</button>
+<hr>
+
+</li>
+
+
+</ul>
