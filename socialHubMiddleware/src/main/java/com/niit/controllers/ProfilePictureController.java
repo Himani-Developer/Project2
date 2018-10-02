@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
@@ -37,6 +38,22 @@ public class ProfilePictureController {
 		profilePictureDAO.uploadProfilePicture(profilePicture);
 		return new ResponseEntity<ProfilePicture>(profilePicture,HttpStatus.OK);
 		
+	}
+	
+	@RequestMapping(value="/getimage",method=RequestMethod.GET)
+	public @ResponseBody byte[] getProfilePicture(@RequestParam String email,HttpSession session) {
+String authEmail=(String)session.getAttribute("loggedInUser");
+		
+		// CHECK FOR AUTHENTICATION
+		if(authEmail==null) {
+			return null;
+		}
+		
+		ProfilePicture profilePicture=profilePictureDAO.getProfilePicture(email);
+		if(profilePicture==null)
+			return null;
+		else
+			return profilePicture.getImage();
 	}
 	
 	

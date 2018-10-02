@@ -129,7 +129,8 @@
     </li>
     
     <li class="nav-item" ng-show="user.email!=undefined">
-    <a class="nav-link" href="#!/uploadprofilepicture">Profile Pic    </a>
+    <a class="nav-link" href="#!/uploadprofilepicture"> 
+    <img src="http://localhost:8081/socialHubMiddleware/getimage?email={{user.email}}" alt="ProfilePic" height="40px" width="40px">  </a>
     </li>
     
     <li class="nav-item" ng-show="user.email!=undefined" >
