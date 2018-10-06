@@ -1,5 +1,17 @@
-<br><br><br>
-
+<style>
+body {
+	margin: 0;
+	padding: 0;
+	font-size: 16px;
+	color: #222;
+	font-family: COTILLIO, sans-serif;
+	font-weight: 300;
+	background:#f3e5f5;
+	
+	
+}
+</style>
+<body>
 <div class="container">
 <b>Blog Title:: </b>{{blogPost.blogTitle}}<br>
 <b>Posted On:: </b> {{blogPost.postedOn | date:'dd-MM-yyyy'}}<br>
@@ -36,3 +48,4 @@ DisLikes::<a ng-click="incdislike(blogPost.id)"><i class="fas fa-thumbs-down"></
 
 
 </div>
+</body>

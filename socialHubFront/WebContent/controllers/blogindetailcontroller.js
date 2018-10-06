@@ -33,7 +33,8 @@ app.controller("BlogInDetailCtrl",function($scope,$location,BlogPostService,$rou
 	
 	$scope.incdislike=function(id){
 		BlogPostService.incdislike(id).then(function(response){
-			$location.path("/getblog/:id")
+			$scope.blogPost=response.data
+			$location.path("/getblog/"+$scope.blogPost.id)  //"/getblog/:id"
 		},function(response){
 			
 			$scope.error=response.data

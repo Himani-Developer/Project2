@@ -65,6 +65,7 @@ app.controller("FriendCtrl",function($scope,$location,FriendService){
 	}
 	
 	
+	
 	getSuggestedUsers()
 	getPendingRequests()
 })

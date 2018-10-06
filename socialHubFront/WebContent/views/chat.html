@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+
+<style>
+body {
+	margin: 0;
+	padding: 0;
+	font-size: 16px;
+	color: #222;
+	font-family: COTILLIO, sans-serif;
+	font-weight: 300;
+	background:rgba(125,255,205,1.5)
+	
+	/* url('assets/images/images (11).jpg'); */
+}
+#chat-box {
+	margin-top:0px;
+	margin-right:70px;
+	position: relative;
+	
+	width: 600px;
+	height: 420px;
+	border-radius: 2px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+	overflow:auto;
+	float:right;
+	bottom:0px;
+	background: rgba(255,255,205,1.5);
+}
+#btn{width:180px; background:rgba(134,41,173,0.8); border:none; box-shadow: 1px 3px 8px #000;text-shadow: 1px 3px 3px #000;font-size: 18px; margin-top:5px;}
+	#btn:hover{width:180px; background:rgba(134,41,173,0.8); border:none; box-shadow: 1px 3px 8px #000;}
+</style>
+</head>
+<body>
+
+	 <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-3 col-md-6 col-lg-4 col-xl-2 ">
+        <div><img src="assets/images/images (11).jpg" alt="cloud" width=300px height="300">
+        </div>
+      </div>
+      <div class="col-sm-9 col-md-6 col-lg-8 col-xl-10 ">
+      <div><img src="assets/images/images (10).jpg" width=300px height="300">
+	</div>
+	<div id="chat-box" ng-controller="ChatCtrl" style="margin-top:50px;">
+		<form ng-submit="addMessage()" name="chatMsg">
+			<div class="col-sm-12">
+				<div class="row" style="background: teal; color:#fff;">
+					<div class="col-sm-9 form-group">
+						<label align="center">Message <input type="text"
+							class="form-control" placeholder="Enter message here" style="width:550px;"
+							ng-model="message"></label> 
+						<button id="btn" class="btn btn-primary"
+							ng-disabled="message.length>250||message.length==0">Send</button><span style="float:right; margin-top:5px;">Maximum <span class="count"
+							ng-bind="max - message.length"> 250 </span></span>
+
+					</div>
+				</div>
+			</div>
+		</form>
+
+
+		<div class="jumbotron" style="background:rgba(255,255,255,0.0);">
+			<p ng-repeat="msg in messages" color="lightblue">
+				<span> <!-- <img	src="http://localhost:8081/socialHubMiddleware/getimage?email={{user.email}}"
+					width="20" height="20"  > --> <font style="text-shadow: 1px 1px 1px #000; color:green;"
+					 face="Verdana"> {{msg.message}} 
+					 	
+					 </font>
+				</span>
+			</p>
+		</div>
+	</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

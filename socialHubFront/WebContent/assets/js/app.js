@@ -22,6 +22,7 @@ app.config(function($routeProvider){
 	.when('/pendingrequests',{controller:'FriendCtrl',templateUrl:'views/pendingrequestlist.html'})
 	.when('/listoffriends',{controller:'FriendCtrl',templateUrl:'views/friendlist.html'})
 	.when('/uploadprofilepicture',{templateUrl:'views/uploadprofilepicture.html'})
+	.when('/chat',{controller:'ChatCtrl',templateUrl:'views/chat.html'})
 	
 	
 	.otherwise({templateUrl:'views/home.html'})
